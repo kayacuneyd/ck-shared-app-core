@@ -130,9 +130,10 @@
 
         <!-- Pagination -->
         <?php if (isset($pager)): ?>
-            <div class="d-flex justify-content-center mt-5">
-                <?= $pager->links() ?>
-            </div>
+            <?= view('components/pagination', [
+                'pager' => $pager,
+                'wrapperClass' => 'd-flex justify-content-center mt-5',
+            ]) ?>
         <?php endif; ?>
     <?php endif; ?>
 </div>

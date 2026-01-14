@@ -65,10 +65,16 @@ class LoginController extends BaseController
                 'isLoggedIn' => true,
             ]);
 
+            $this->audit('auth.login.success', [
+                'user_id' => $user['id'],
+                'email' => $user['email'],
+            ]);
+
             return redirect()->to('/admin');
         }
 
-        return redirect()->back()->with('error', 'Invalid credentials');
+        $this->audit('auth.login.failed', ['email' => $email]);
+        return redirect()->back()->with('error', lang('Auth.errors.invalid_credentials'));
     }
 
     /**
@@ -78,7 +84,12 @@ class LoginController extends BaseController
      */
     public function logout()
     {
-        session()->destroy();
+        $session = session();
+        $this->audit('auth.logout', [
+            'user_id' => $session->get('user_id'),
+            'email' => $session->get('user_email'),
+        ]);
+        $session->destroy();
         return redirect()->to('/');
     }
 }

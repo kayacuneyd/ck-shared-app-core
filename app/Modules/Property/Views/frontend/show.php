@@ -3,13 +3,14 @@
 <?= $this->section('content') ?>
 
 <div class="container py-4">
-    <nav aria-label="breadcrumb" class="mb-4">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/"><?= lang('Property.frontend.home') ?></a></li>
-            <li class="breadcrumb-item"><a href="/properties"><?= lang('Property.frontend.title') ?></a></li>
-            <li class="breadcrumb-item active" aria-current="page"><?= esc($property->title) ?></li>
-        </ol>
-    </nav>
+    <?= view('components/breadcrumb', [
+        'containerClass' => 'mb-4',
+        'items' => [
+            ['label' => lang('Property.frontend.home'), 'url' => '/'],
+            ['label' => lang('Property.frontend.title'), 'url' => '/properties'],
+            ['label' => $property->title, 'active' => true],
+        ],
+    ]) ?>
 
     <div class="row">
         <!-- Main Content -->

@@ -27,7 +27,14 @@
     "scripts": {
         "post-update-cmd": [
             "@composer dump-autoload"
-        ]
+        ],
+        "serve": "php spark serve",
+        "migrate": "php spark migrate --all",
+        "seed:admin": "php spark db:seed AdminSeeder",
+        "seed:property": "php spark db:seed \"App\\\\Modules\\\\Property\\\\Database\\\\Seeds\\\\PropertySeeder\"",
+        "routes": "php spark routes",
+        "cache:clear": "php spark cache:clear",
+        "release": "php scripts/build-release.php"
     },
     "minimum-stability": "stable",
     "prefer-stable": true

@@ -30,6 +30,7 @@ class AuthFilter implements FilterInterface
     {
         $session = session();
         if (!$session->get('isLoggedIn')) {
+            $session->setFlashdata('error', lang('Auth.errors.login_required'));
             return redirect()->to('/login');
         }
     }

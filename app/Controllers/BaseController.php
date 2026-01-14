@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Libraries\AuditLog;
 use CodeIgniter\Controller;
 use Psr\Log\LoggerInterface;
 
@@ -19,7 +20,7 @@ class BaseController extends Controller
      *
      * @var array<string>
      */
-    protected $helpers = ['url', 'html', 'form'];
+    protected $helpers = ['url', 'html', 'form', 'ck', 'date', 'security'];
 
     /**
      * Instance of the main Request object.
@@ -34,6 +35,13 @@ class BaseController extends Controller
      * @var \CodeIgniter\Session\Session
      */
     protected $session;
+
+    /**
+     * Audit logger instance.
+     *
+     * @var AuditLog
+     */
+    protected AuditLog $auditLog;
 
     /**
      * Initialization code shared by all controllers.
@@ -52,5 +60,17 @@ class BaseController extends Controller
 
         // Preload any models, libraries, etc, here.
         $this->session = session();
+        $this->auditLog = new AuditLog();
+    }
+
+    /**
+     * Convenience wrapper for audit logging.
+     *
+     * @param string $action Audit action name
+     * @param array $context Extra context data
+     */
+    protected function audit(string $action, array $context = []): void
+    {
+        $this->auditLog->log($action, $context);
     }
 }
