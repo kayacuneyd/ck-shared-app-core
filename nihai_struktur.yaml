@@ -1,0 +1,71 @@
+ck-shared-app-core/
+├── app/
+│   ├── Config/
+│   │   ├── App.php
+│   │   ├── Database.php
+│   │   ├── Routes.php
+│   │   ├── Filters.php
+│   │   └── CKProduct.php
+│   │
+│   ├── Controllers/
+│   │   ├── BaseController.php
+│   │   ├── Frontend/
+│   │   │   └── HomeController.php
+│   │   └── Admin/
+│   │       └── DashboardController.php
+│   │
+│   ├── Models/
+│   │   ├── BaseModel.php
+│   │   └── UserModel.php
+│   │
+│   ├── Views/
+│   │   ├── layouts/
+│   │   │   ├── frontend.php
+│   │   │   └── admin.php
+│   │   ├── frontend/
+│   │   └── admin/
+│   │
+│   ├── Modules/
+│   │   └── README.md
+│   │
+│   ├── Language/
+│   │   ├── de/
+│   │   ├── tr/
+│   │   └── en/
+│   │
+│   ├── Helpers/
+│   │   ├── ck_helper.php
+│   │   ├── seo_helper.php
+│   │   └── asset_helper.php
+│   │
+│   └── Database/
+│       ├── Migrations/
+│       └── Seeds/
+│
+├── public/
+│   ├── index.php
+│   └── assets/
+│       ├── css/
+│       │   ├── bootstrap.min.css
+│       │   ├── app.css
+│       │   └── admin.css
+│       ├── js/
+│       │   └── bootstrap.bundle.min.js
+│       └── images/
+│
+├── writable/
+│   └── database/
+│       └── app.sqlite
+│
+├── docs/
+│   ├── architecture.md
+│   ├── database.md
+│   ├── modules.md
+│   ├── deployment-shared-hosting.md
+│   └── ai-usage.md
+│
+├── .gitignore
+├── env.example
+├── composer.json
+├── spark
+└── README.md

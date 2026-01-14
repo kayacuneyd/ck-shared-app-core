@@ -1,0 +1,10 @@
+# Disable directory browsing
+Options -Indexes
+
+# Enable URL rewriting
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Handle requests to the public folder
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
